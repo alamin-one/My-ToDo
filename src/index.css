@@ -24,6 +24,6 @@ body {
     @apply text-[14px] text-gray-400;
   }
   .ps {
-    @apply text-[12px] text-gray-400;
+    @apply text-[14px] text-gray-400;
   }
 }

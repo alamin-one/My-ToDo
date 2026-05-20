@@ -16,6 +16,7 @@ export const useAuthContext = () => {
 const Auth = ({ children }) => {
   //local state
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [authUser, setAuthUser] = useState();
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth(app);
@@ -24,18 +25,21 @@ const Auth = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       setAuthUser(user);
-      return () => {
-        unsubscribe();
-      };
+      localStorage.setItem('authUser', JSON.stringify(user));
     });
+    return () => {
+      unsubscribe();
+    };
   }, [auth]);
 
   // signInWithGoogle
   const signInWithGoogle = async () => {
     try {
       setError(false);
+      setLoading(true);
       const result = await signInWithPopup(auth, googleProvider);
       setAuthUser(result.user);
+      setLoading(false);
     } catch (error) {
       console.log(error);
       setError(true);
@@ -45,6 +49,7 @@ const Auth = ({ children }) => {
   const value = {
     signInWithGoogle,
     error,
+    loading,
     authUser,
   };
   return (

@@ -1,10 +1,9 @@
-import img from '../../assets/userIMg.webp';
 import logo from '../../assets/logo.webp';
+import img from '../../assets/userIMg.webp';
 import { useAuthContext } from '../../context/Auth';
 
 const Header = () => {
   const { signInWithGoogle, error, authUser } = useAuthContext();
-  console.log(authUser);
 
   const photURL = !error && authUser ? authUser.photoURL : img;
   return (

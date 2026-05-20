@@ -1,9 +1,13 @@
 import LInk from '../../components/ui/LInk';
+import { useToDoContext } from '../../context/TodoProvider';
 import DashboardStats from './DashboardStats';
 import TaskForm from './TaskForm';
 import TodoCard from './TodoCard';
 
 const Home = () => {
+  const { error, loading, addTodo } = useToDoContext();
+
+
   return (
     <>
       {/* DashboardStats */}
@@ -29,6 +33,7 @@ const Home = () => {
       {/* 
       Task form 
       */}
+
       <TaskForm />
 
       {/*TodoContainer */}
@@ -56,15 +61,14 @@ const Home = () => {
             lable="Delete All"
           />
         </div>
-
-        {/*
-        TodoCard Box 
-        */}
         <div>
-          {/*
-       TodoCard 
-       */}
-          <TodoCard />
+          {/* TodoCard*/}
+          {error && <p>There was an Error</p>}
+          {loading && <p>loading...</p>}
+          {!loading &&
+            addTodo.map((Titem, Tindex) => (
+              <TodoCard key={Tindex} Titem={Titem} />
+            ))}
         </div>
       </div>
     </>
