@@ -1,5 +1,11 @@
+import Header from './components/layout/Header';
+
 function App() {
-  return <>lorem</>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default App;

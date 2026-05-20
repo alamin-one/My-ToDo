@@ -1,1 +1,29 @@
 @import 'tailwindcss';
+
+body {
+  font-family: poppins;
+}
+
+@theme {
+  --color-BG: #0a1525;
+  --color-BG-SEC: #0f1d32;
+
+  --color-BORDER: #1e2e48;
+  --color-HEADING: #00bdf5;
+  --color-TEXT: #99a1af;
+}
+
+@layer components {
+  .containers {
+    @apply container max-w-200 mx-auto px-5 py-5;
+  }
+  h2 {
+    @apply text-white text-[14px] md:text-[16px] font-semibold;
+  }
+  p {
+    @apply text-[14px] text-gray-400;
+  }
+  .ps {
+    @apply text-[12px] text-gray-400;
+  }
+}
