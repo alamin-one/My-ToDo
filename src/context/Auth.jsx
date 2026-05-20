@@ -1,0 +1,57 @@
+import {
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+} from 'firebase/auth';
+import { useContext, useEffect, useState } from 'react';
+import app from '../firebase';
+import createAuthContext from './createAuthContext';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useAuthContext = () => {
+  return useContext(createAuthContext);
+};
+
+const Auth = ({ children }) => {
+  //local state
+  const [error, setError] = useState(false);
+  const [authUser, setAuthUser] = useState();
+  const googleProvider = new GoogleAuthProvider();
+  const auth = getAuth(app);
+
+  // state chenge
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      setAuthUser(user);
+      return () => {
+        unsubscribe();
+      };
+    });
+  }, [auth]);
+
+  // signInWithGoogle
+  const signInWithGoogle = async () => {
+    try {
+      setError(false);
+      const result = await signInWithPopup(auth, googleProvider);
+      setAuthUser(result.user);
+    } catch (error) {
+      console.log(error);
+      setError(true);
+    }
+  };
+
+  const value = {
+    signInWithGoogle,
+    error,
+    authUser,
+  };
+  return (
+    <createAuthContext.Provider value={value}>
+      {children}
+    </createAuthContext.Provider>
+  );
+};
+
+export default Auth;

@@ -1,9 +1,16 @@
 import Header from './components/layout/Header';
+import Auth from './context/Auth';
+import Home from './page/home/Home';
 
 function App() {
   return (
     <>
-      <Header />
+      <Auth>
+        <Header />
+        <main className="containers">
+          <Home />
+        </main>
+      </Auth>
     </>
   );
 }

@@ -7,30 +7,23 @@ const Home = () => {
   return (
     <>
       {/* DashboardStats */}
+
       <div className="flex justify-between gap-5">
-        <div className="flex justify-between gap-5">
-          <DashboardStats
-            className="bg-BG-SEC  border-BORDER"
-            label="Total"
-            totalCount={3}
-          />
-        </div>
-        <div className="flex justify-between gap-5">
-          {/* DashboardStats */}
-          <DashboardStats
-            className="bg-HEADING/5  border-HEADING/20"
-            label="Active"
-            totalCount={2}
-          />
-        </div>
-        <div className="flex justify-between gap-5">
-          {/* DashboardStats */}
-          <DashboardStats
-            className="bg-green-800/10 border-green-800/60"
-            label="Done"
-            totalCount={6}
-          />
-        </div>
+        <DashboardStats
+          className="bg-BG-SEC  border-BORDER text-white"
+          label="Total"
+          totalCount={3}
+        />
+        <DashboardStats
+          className="bg-HEADING/5  border-HEADING/20"
+          label="Active"
+          totalCount={2}
+        />
+        <DashboardStats
+          className="bg-green-800/10 border-green-800/60"
+          label="Done"
+          totalCount={6}
+        />
       </div>
 
       {/* 

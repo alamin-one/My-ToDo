@@ -2,12 +2,12 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAsEPIl1E1D-x0yHMLm5NPNgXXwolp3B5Q',
-  authDomain: 'todo-alamin-dev.firebaseapp.com',
-  projectId: 'todo-alamin-dev',
-  storageBucket: 'todo-alamin-dev.firebasestorage.app',
-  messagingSenderId: '324531740617',
-  appId: '1:324531740617:web:fccbd156ff351c6a089218',
+  apiKey: import.meta.env.VITE_APP_API_KEY,
+  authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_APP_ID,
 };
 
 // Initialize Firebase
