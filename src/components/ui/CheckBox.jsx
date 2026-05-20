@@ -1,12 +1,18 @@
-const CheckBox = ({ completed }) => {
+const CheckBox = ({ toggleComplete, Titem }) => {
+  const Id = Titem.id;
   return (
     <>
       <label className="flex items-center cursor-pointer">
-        <input type="checkbox"  className="peer hidden " />
+        <input
+          type="checkbox"
+          checked={Titem.completed}
+          onChange={e => toggleComplete(e, Id)}
+          className="peer hidden "
+        />
 
-        <div className="  w-5 h-5  border border-gray-400 rounded-md flex items-center justify-center  peer-checked:bg-HEADING  peer-checked:border-HEADING">
+        <div className="  w-5 h-5  border border-gray-400 rounded-md flex items-center justify-center  peer-checked:bg-HEADING/20  peer-checked:border-HEADING/20">
           <svg
-            className={`${completed ? 'peer-checked:block' : 'hidden'}  w-4 h-4 text-white`}
+            className={`${Titem.completed ? 'peer-checked:block' : 'hidden'}  w-4 h-4 text-white`}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

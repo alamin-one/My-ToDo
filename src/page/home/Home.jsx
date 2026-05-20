@@ -5,8 +5,7 @@ import TaskForm from './TaskForm';
 import TodoCard from './TodoCard';
 
 const Home = () => {
-  const { error, loading, addTodo } = useToDoContext();
-
+  const { error, loading, addTodo, toggleComplete } = useToDoContext();
 
   return (
     <>
@@ -67,7 +66,11 @@ const Home = () => {
           {loading && <p>loading...</p>}
           {!loading &&
             addTodo.map((Titem, Tindex) => (
-              <TodoCard key={Tindex} Titem={Titem} />
+              <TodoCard
+                key={Tindex}
+                Titem={Titem}
+                toggleComplete={toggleComplete}
+              />
             ))}
         </div>
       </div>

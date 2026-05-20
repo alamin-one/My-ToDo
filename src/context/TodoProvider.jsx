@@ -1,4 +1,11 @@
-import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  updateDoc,
+} from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import app from '../firebase';
 
@@ -80,11 +87,24 @@ const TodoProvider = ({ children }) => {
     });
   };
 
+  //toggleComplete
+  const toggleComplete = async (e, Id) => {
+    setAddTodo(() => {
+      return addTodo.map(Iitem =>
+        Iitem.id === Id ? { ...Iitem, completed: e.target.checked } : Iitem,
+      );
+    });
+    await updateDoc(doc(db, 'users', localUser.uid, 'todos', Id), {
+      completed: e.target.checked,
+    });
+  };
+
   const value = {
     error,
     loading,
     addTodo,
     submitToDo,
+    toggleComplete,
   };
 
   // console.log(addTodo)

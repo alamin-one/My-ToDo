@@ -7,7 +7,7 @@ const TaskForm = () => {
   const [adTask, setAdTask] = useState('');
   const [adTaskDetail, setAdTaskDetail] = useState('');
 
-  const { submitToDo } = useToDoContext();
+  const { submitToDo, toggleComplete } = useToDoContext();
 
   return (
     <div className="w-full mt-5 md:mt-7 p-5 border border-BORDER rounded-xl  bg-BG-SEC ">
