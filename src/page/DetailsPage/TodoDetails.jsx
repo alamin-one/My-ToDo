@@ -5,7 +5,6 @@ import LInk from '../../components/ui/LInk';
 import Textarea from '../../components/ui/Textarea';
 import { useToDoContext } from '../../context/TodoProvider';
 
-import { FaCheck } from 'react-icons/fa6';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const TodoDetails = () => {
@@ -38,7 +37,7 @@ const TodoDetails = () => {
   return (
     <>
       <Link to={'/'}>
-        <LInk lable="<" />
+        <LInk className="text-[14px]!" lable="<" />
       </Link>
 
       <div className=" mt-3 p-5  border border-BORDER hover:border-HEADING/50 rounded-xl bg-BG-SEC ">
@@ -70,7 +69,7 @@ const TodoDetails = () => {
           )}
         </div>
         {/* Delete Edit Save Mark Acitve and Mark Complete Button*/}
-        <div className="flex gap-5 mt-5">
+        <div className="flex  gap-2.5 md:gap-5 mt-5">
           <button
             onClick={() => {
               (toggleComplete(Titem), setTog(prev => !prev));
@@ -82,15 +81,7 @@ const TodoDetails = () => {
                 : 'text-green-300 border-green-300/30 rounded-md bg-green-800/30'
             }`}
           >
-            {tog ? (
-              <> Mark Active</>
-            ) : (
-              <>
-                {' '}
-                <FaCheck />
-                Mark complete
-              </>
-            )}
+            {tog ? <> Mark Active</> : <> Mark complete</>}
           </button>
 
           <button

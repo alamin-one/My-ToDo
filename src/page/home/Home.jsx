@@ -57,7 +57,7 @@ const Home = () => {
       {/*TodoContainer */}
       <div>
         {/*  FilterTabs   */}
-        <div className="flex justify-between my-5">
+        <div className="flex justify-between my-5 gap-1.5 ">
           <div className="space-x-1.5">
             {filterAry.map((fItem, fIndex) => (
               <LInk
