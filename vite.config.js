@@ -14,8 +14,8 @@ export default defineConfig({
         short_name: 'Todo',
         start_url: '/',
         display: 'standalone',
-        background_color: '#0f0f0f',
-        theme_color: '#0f0f0f',
+        background_color: '#0a1525',
+        theme_color: '#0a1525',
         icons: [
           {
             src: '/icon-192.png',
