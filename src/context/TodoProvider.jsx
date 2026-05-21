@@ -1,6 +1,7 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDocs,
   getFirestore,
@@ -99,12 +100,33 @@ const TodoProvider = ({ children }) => {
     });
   };
 
+  // delete Todo
+  const deleteTodo = async Id => {
+    setAddTodo(() => {
+      return addTodo.filter(Iitem => Iitem.id !== Id);
+    });
+    await deleteDoc(doc(db, 'users', localUser.uid, 'todos', Id));
+  };
+
+  // deleteAllToDo
+  const deleteAllToDo = async () => {
+    setAddTodo([]);
+
+    const dLTITM = addTodo.map(Item => {
+      return deleteDoc(doc(db, 'users', localUser.uid, 'todos', Item.id));
+    });
+    await Promise.all(dLTITM);
+  };
+
+  
   const value = {
     error,
     loading,
     addTodo,
     submitToDo,
     toggleComplete,
+    deleteTodo,
+    deleteAllToDo,
   };
 
   // console.log(addTodo)

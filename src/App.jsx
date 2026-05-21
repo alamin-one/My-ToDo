@@ -1,7 +1,7 @@
+import { Outlet } from 'react-router';
 import Header from './components/layout/Header';
 import Auth from './context/Auth';
 import TodoProvider from './context/TodoProvider';
-import Home from './page/home/Home';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <TodoProvider>
           <Header />
           <main className="containers">
-            <Home />
+            <Outlet />
           </main>
         </TodoProvider>
       </Auth>

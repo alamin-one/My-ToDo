@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import LInk from '../../components/ui/LInk';
 import { useToDoContext } from '../../context/TodoProvider';
 import DashboardStats from './DashboardStats';
@@ -5,7 +6,26 @@ import TaskForm from './TaskForm';
 import TodoCard from './TodoCard';
 
 const Home = () => {
-  const { error, loading, addTodo, toggleComplete } = useToDoContext();
+  const { error, loading, addTodo, toggleComplete, deleteAllToDo } =
+    useToDoContext();
+  const filterAry = ['All', 'Active', 'Completed'];
+  const [filter, setFilter] = useState('All');
+
+  const filterFN = () => {
+    const T = addTodo.filter(F =>
+      filter === 'Active'
+        ? F.completed === false
+        : filter === 'Completed'
+          ? F.completed === true
+          : F,
+    );
+    return T;
+  };
+  const filtered = filterFN();
+
+  const total = addTodo.length;
+  const Active = addTodo.filter(A => !A.completed).length;
+  const Completed = addTodo.filter(A => A.completed).length;
 
   return (
     <>
@@ -15,17 +35,17 @@ const Home = () => {
         <DashboardStats
           className="bg-BG-SEC  border-BORDER text-white"
           label="Total"
-          totalCount={3}
+          totalCount={total}
         />
         <DashboardStats
           className="bg-HEADING/5  border-HEADING/20"
           label="Active"
-          totalCount={2}
+          totalCount={Active}
         />
         <DashboardStats
           className="bg-green-800/10 border-green-800/60"
           label="Done"
-          totalCount={6}
+          totalCount={Completed}
         />
       </div>
 
@@ -40,23 +60,20 @@ const Home = () => {
         {/*  FilterTabs   */}
         <div className="flex justify-between my-5">
           <div className="space-x-1.5">
-            <LInk
-              className="hover:border-BORDER  hover:bg-HEADING hover:text-BG"
-              lable="All"
-            />
-            <LInk
-              className="hover:border-BORDER  hover:bg-HEADING hover:text-BG"
-              lable="Active"
-            />
-
-            <LInk
-              className="hover:border-BORDER  hover:bg-HEADING hover:text-BG"
-              lable="Completed"
-            />
+            {filterAry.map((fItem, fIndex) => (
+              <LInk
+                lable={fItem}
+                key={fIndex}
+                lable={fItem}
+                onClick={() => setFilter(fItem)}
+                className={fItem === filter ? 'bg-HEADING/50 text-white' : ''}
+              ></LInk>
+            ))}
           </div>
 
           <LInk
-            className="hover:border-BORDER  hover:bg-HEADING hover:text-BG"
+            onClick={deleteAllToDo}
+            className="hover:border-red-400/30  hover:text-red-400! hover:bg-BG!"
             lable="Delete All"
           />
         </div>
@@ -65,7 +82,7 @@ const Home = () => {
           {error && <p>There was an Error</p>}
           {loading && <p>loading...</p>}
           {!loading &&
-            addTodo.map((Titem, Tindex) => (
+            filtered.map((Titem, Tindex) => (
               <TodoCard
                 key={Tindex}
                 Titem={Titem}
@@ -77,5 +94,4 @@ const Home = () => {
     </>
   );
 };
-
 export default Home;
