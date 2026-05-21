@@ -11,7 +11,7 @@ const Textarea = ({
       id={id}
       placeholder={placeholder}
       className={`w-full ps mt-3 px-5 py-2 border rounded-xl border-BORDER focus:outline-none focus:ring-1 focus:ring-HEADING ${className}`}
-   {...res}
+      {...res}
     ></textarea>
   );
 };

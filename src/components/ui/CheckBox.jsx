@@ -1,12 +1,12 @@
 const CheckBox = ({ toggleComplete, Titem }) => {
-  const Id = Titem.id;
+
   return (
     <>
       <label className="flex items-center cursor-pointer">
         <input
           type="checkbox"
           checked={Titem.completed}
-          onChange={e => toggleComplete(e, Id)}
+          onChange={() => toggleComplete(Titem)}
           className="peer hidden "
         />
 

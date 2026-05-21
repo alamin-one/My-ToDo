@@ -89,14 +89,27 @@ const TodoProvider = ({ children }) => {
   };
 
   //toggleComplete
-  const toggleComplete = async (e, Id) => {
+  const toggleComplete = async Titem => {
     setAddTodo(() => {
-      return addTodo.map(Iitem =>
-        Iitem.id === Id ? { ...Iitem, completed: e.target.checked } : Iitem,
+      return addTodo.map(item =>
+        item.id === Titem.id ? { ...item, completed: !Titem.completed } : item,
       );
     });
-    await updateDoc(doc(db, 'users', localUser.uid, 'todos', Id), {
-      completed: e.target.checked,
+    await updateDoc(doc(db, 'users', localUser.uid, 'todos', Titem.id), {
+      completed: !Titem.completed,
+    });
+  };
+
+  // updateTodo
+  const updateTodo = async (state, editVal) => {
+    setAddTodo(() => {
+      return addTodo.map(item =>
+        item.id === state.id ? { ...item, description: editVal } : item,
+      );
+    });
+
+    await updateDoc(doc(db, 'users', localUser.uid, 'todos', state.id), {
+      description: editVal,
     });
   };
 
@@ -118,7 +131,6 @@ const TodoProvider = ({ children }) => {
     await Promise.all(dLTITM);
   };
 
-  
   const value = {
     error,
     loading,
@@ -127,6 +139,8 @@ const TodoProvider = ({ children }) => {
     toggleComplete,
     deleteTodo,
     deleteAllToDo,
+    updateTodo,
+    localUser,
   };
 
   // console.log(addTodo)

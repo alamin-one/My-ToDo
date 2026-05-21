@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import CheckBox from '../../components/ui/CheckBox';
 import { useToDoContext } from '../../context/TodoProvider';
 
@@ -12,9 +13,13 @@ const TodoCard = ({ Titem, toggleComplete }) => {
       <CheckBox toggleComplete={toggleComplete} Titem={Titem} />
 
       <div className="w-[75%] md:w-[80%]">
-        <h2 className="line-clamp-1">{Titem.title}</h2>
-        <p className="line-clamp-1">{Titem.description}</p>
-        <p className="text-[12px] text-gray-300/30 mt-1">{Titem.createDate}</p>
+        <Link to={`/details/${Titem.id}`} state={Titem}>
+          <h2 className="line-clamp-1">{Titem.title}</h2>
+          <p className="line-clamp-1">{Titem.description}</p>
+          <p className="text-[12px] text-gray-300/30 mt-1">
+            {Titem.createDate}
+          </p>
+        </Link>
       </div>
 
       <button
