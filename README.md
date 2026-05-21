@@ -1,7 +1,13 @@
-
 # TodoApp
 
-A full-stack Todo application built with React and Firebase — featuring Google authentication, real-time Firestore database, and complete task management.
+A full-stack Todo application built with React and Firebase — featuring Google
+authentication, real-time Firestore database, and complete task management.
+
+---
+
+## 🌐 Live Demo
+
+[https://my-to-do-nu.vercel.app](https://my-to-do-nu.vercel.app)
 
 ---
 
@@ -15,21 +21,22 @@ A full-stack Todo application built with React and Firebase — featuring Google
 - **Filter Tasks** — Filter by All, Active, or Completed
 - **Dashboard Stats** — Live count of Total, Active, and Done tasks
 - **Details Page** — Full task view with edit, delete, and status toggle
-- **Protected Actions** — Login popup shown before any action if not authenticated
+- **Protected Actions** — Login popup shown before any action if not
+  authenticated
 - **Persistent Auth** — User session saved in localStorage
 
 ---
 
 ## Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| React 19 | UI Framework |
-| React Router v7 | Client-side routing |
-| Firebase Auth | Google authentication |
-| Firebase Firestore | Real-time database |
-| Tailwind CSS | Styling |
-| Vite | Build tool |
+| Technology         | Purpose               |
+| ------------------ | --------------------- |
+| React 19           | UI Framework          |
+| React Router v7    | Client-side routing   |
+| Firebase Auth      | Google authentication |
+| Firebase Firestore | Real-time database    |
+| Tailwind CSS       | Styling               |
+| Vite               | Build tool            |
 
 ---
 
@@ -105,10 +112,12 @@ npm run dev
 ## Authentication Flow
 
 1. User visits the app
-2. Any protected action (add, edit, delete) triggers a login popup if not authenticated
+2. Any protected action (add, edit, delete) triggers a login popup if not
+   authenticated
 3. User signs in with Google via Firebase popup
 4. Auth state persists in `localStorage` across page reloads
-5. Todos are stored per user using their Firebase UID as the Firestore path: `users/{uid}/todos`
+5. Todos are stored per user using their Firebase UID as the Firestore path:
+   `users/{uid}/todos`
 
 ---
 
@@ -140,7 +149,8 @@ npm run lint      # Run ESLint
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open an issue first to
+discuss what you would like to change.
 
 ---
 
