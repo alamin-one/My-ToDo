@@ -35,6 +35,9 @@ const TodoProvider = ({ children }) => {
    use array spread [...] not object spread {...}
    because {...array} converts it into an object instead of keeping it as an array */
   useEffect(() => {
+    //
+    if (!localUser) return;
+
     const db = getFirestore(app);
     const getTodo = async () => {
       try {
