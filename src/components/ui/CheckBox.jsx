@@ -1,5 +1,4 @@
 const CheckBox = ({ toggleComplete, Titem }) => {
-
   return (
     <>
       <label className="flex items-center cursor-pointer">
@@ -16,7 +15,6 @@ const CheckBox = ({ toggleComplete, Titem }) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            // stroke-width="3"
           >
             <path d="M5 13l4 4L19 7" />
           </svg>

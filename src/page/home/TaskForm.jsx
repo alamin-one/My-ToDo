@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import Input from '../../components/ui/Input';
-import Textarea from '../../components/ui/Textarea';
 import { useToDoContext } from '../../context/TodoProvider';
 
+import Input from '../../components/ui/Input';
+import Textarea from '../../components/ui/Textarea';
+
 const TaskForm = () => {
+  //
   const [adTask, setAdTask] = useState('');
   const [adTaskDetail, setAdTaskDetail] = useState('');
-
-  const { submitToDo, toggleComplete } = useToDoContext();
+  const { submitToDo } = useToDoContext();
 
   return (
     <div className="w-full mt-5 md:mt-7 p-5 border border-BORDER rounded-xl  bg-BG-SEC ">
@@ -30,7 +31,7 @@ const TaskForm = () => {
           />
           <button
             type="submit"
-            className="shrink-0  text-white ml-4 px-5 py-2 rounded-xl bg-HEADING/60 hover:bg-HEADING/20"
+            className="shrink-0  text-white ml-4 px-5 py-2 rounded-xl bg-HEADING/60 hover:bg-HEADING/20 cursor-pointer"
           >
             ADD TASK
           </button>

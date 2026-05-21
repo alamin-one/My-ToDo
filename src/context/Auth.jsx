@@ -21,7 +21,7 @@ const Auth = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth(app);
 
-  // state chenge
+  // onAuthStateChanged
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       setAuthUser(user);
@@ -46,6 +46,7 @@ const Auth = ({ children }) => {
     }
   };
 
+  // Provide
   const value = {
     signInWithGoogle,
     error,

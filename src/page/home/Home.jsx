@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import LInk from '../../components/ui/LInk';
 import { useToDoContext } from '../../context/TodoProvider';
 import DashboardStats from './DashboardStats';
@@ -6,8 +7,10 @@ import TaskForm from './TaskForm';
 import TodoCard from './TodoCard';
 
 const Home = () => {
+  //
   const { error, loading, addTodo, toggleComplete, deleteAllToDo } =
     useToDoContext();
+
   const filterAry = ['All', 'Active', 'Completed'];
   const [filter, setFilter] = useState('All');
 
@@ -49,10 +52,6 @@ const Home = () => {
         />
       </div>
 
-      {/* 
-      Task form 
-      */}
-
       <TaskForm />
 
       {/*TodoContainer */}
@@ -79,11 +78,11 @@ const Home = () => {
         </div>
         <div>
           {/* TodoCard*/}
+
           {error && <p>There was an Error</p>}
           {loading && <p>loading...</p>}
           {!loading &&
             filtered.map((Titem, Tindex) => (
-              
               <TodoCard
                 key={Tindex}
                 Titem={Titem}

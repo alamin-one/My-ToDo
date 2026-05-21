@@ -1,10 +1,10 @@
+import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link } from 'react-router';
 import CheckBox from '../../components/ui/CheckBox';
 import { useToDoContext } from '../../context/TodoProvider';
 
-import { RiDeleteBin6Line } from 'react-icons/ri';
-
 const TodoCard = ({ Titem, toggleComplete }) => {
+  //
   const { deleteTodo } = useToDoContext();
   const Id = Titem.id;
 
@@ -24,7 +24,7 @@ const TodoCard = ({ Titem, toggleComplete }) => {
 
       <button
         onClick={() => deleteTodo(Id)}
-        className="border border-BORDER rounded-[10px] hover:border-red-400/40  ps p-2 bg-BG-SEC  hover:text-red-400"
+        className="border border-BORDER rounded-[10px] hover:border-red-400/40  ps p-2 bg-BG-SEC  hover:text-red-400 cursor-pointer"
       >
         <RiDeleteBin6Line />
       </button>
