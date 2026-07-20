@@ -1,159 +1,104 @@
-# TodoApp
+# TodoApp — Full Stack Todo Application
 
-A full-stack Todo application built with React and Firebase — featuring Google
-authentication, real-time Firestore database, and complete task management.
+A modern full-stack Todo application built with **React**, **Firebase Authentication**, and **Firestore**. It provides a simple and efficient task management experience with Google login, real-time database updates, and complete CRUD functionality.
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![Vite](https://img.shields.io/badge/Vite-Build_Tool-646CFF?logo=vite)
+![Firebase](https://img.shields.io/badge/Firebase-Backend-FFCA28?logo=firebase)
+![Firestore](https://img.shields.io/badge/Firestore-Database-FFCA28?logo=firebase)
+![Firebase Auth](https://img.shields.io/badge/Firebase_Auth-Authentication-FFCA28?logo=firebase)
+![React Router](https://img.shields.io/badge/React_Router-v7-CA4245?logo=reactrouter)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Framework-38BDF8?logo=tailwind-css)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
-[https://my-to-do-nu.vercel.app](https://my-to-do-nu.vercel.app)
+**Live Preview:** https://my-to-do-nu.vercel.app
 
 ---
 
 ## Features
 
-- **Google Authentication** — One-click login with Firebase Auth
-- **Create Tasks** — Add tasks with title and optional description
-- **Edit Tasks** — Inline description editing from the details page
-- **Delete Tasks** — Delete single or all tasks at once
-- **Mark Complete / Active** — Toggle task status with real-time sync
-- **Filter Tasks** — Filter by All, Active, or Completed
-- **Dashboard Stats** — Live count of Total, Active, and Done tasks
-- **Details Page** — Full task view with edit, delete, and status toggle
-- **Protected Actions** — Login popup shown before any action if not
-  authenticated
-- **Persistent Auth** — User session saved in localStorage
+### Authentication
+
+- Google Authentication with Firebase
+- Persistent User Session
+- Protected Actions
+- Login Popup for Unauthorized Actions
+
+### Task Management
+
+- Create Tasks
+- Edit Task Details
+- Delete Single Task
+- Delete All Tasks
+- Mark Task as Complete / Active
+- Real-time Task Updates
+
+### Dashboard
+
+- Total Task Count
+- Active Task Count
+- Completed Task Count
+- Task Filtering
+  - All
+  - Active
+  - Completed
+
+### User Experience
+
+- Responsive Design
+- Real-time Firestore Sync
+- Loading States
+- Clean UI
+- Fast Performance
 
 ---
 
 ## Tech Stack
 
-| Technology         | Purpose               |
-| ------------------ | --------------------- |
-| React 19           | UI Framework          |
-| React Router v7    | Client-side routing   |
-| Firebase Auth      | Google authentication |
-| Firebase Firestore | Real-time database    |
-| Tailwind CSS       | Styling               |
-| Vite               | Build tool            |
+| Frontend | Backend & Services |
+|----------|--------------------|
+| React 19 | Firebase Authentication |
+| Vite | Firebase Firestore |
+| React Router v7 | Real-time Database |
+| Tailwind CSS | |
+| Context API | |
 
 ---
 
 ## Project Structure
 
-```
+```text
 src/
 ├── components/
 │   ├── layout/
 │   │   └── Header.jsx
+│   │
 │   └── ui/
 │       ├── CheckBox.jsx
 │       ├── Input.jsx
-│       ├── LInk.jsx
+│       ├── Link.jsx
 │       └── Textarea.jsx
+│
 ├── context/
-│   ├── Auth.jsx            # Google auth context & provider
+│   ├── Auth.jsx
 │   ├── createAuthContext.js
-│   ├── TodoProvider.jsx    # Todo CRUD context & provider
+│   ├── TodoProvider.jsx
 │   └── todoContext.js
-├── page/
+│
+├── pages/
 │   ├── home/
 │   │   ├── Home.jsx
 │   │   ├── DashboardStats.jsx
 │   │   ├── TaskForm.jsx
 │   │   └── TodoCard.jsx
+│   │
 │   └── DetailsPage/
 │       └── TodoDetails.jsx
-├── firebase.js             # Firebase config
+│
+├── firebase.js
 ├── App.jsx
 └── main.jsx
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- A Firebase project with Firestore and Google Auth enabled
-
-### Installation
-
-```bash
-git clone https://github.com/alamin-one/My-ToDo.git
-cd My-ToDo
-# Install dependencies
-npm install
-```
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-VITE_APP_API_KEY=your_api_key
-VITE_APP_AUTH_DOMAIN=your_auth_domain
-VITE_APP_PROJECT_ID=your_project_id
-VITE_APP_STORAGE_BUCKET=your_storage_bucket
-VITE_APP_MESSAGING_SENDER_ID=your_messaging_sender_id
-VITE_APP_APP_ID=your_app_id
-```
-
-### Run Locally
-
-```bash
-npm run dev
-```
-
----
-
-## Authentication Flow
-
-1. User visits the app
-2. Any protected action (add, edit, delete) triggers a login popup if not
-   authenticated
-3. User signs in with Google via Firebase popup
-4. Auth state persists in `localStorage` across page reloads
-5. Todos are stored per user using their Firebase UID as the Firestore path:
-   `users/{uid}/todos`
-
----
-
-## Firestore Data Structure
-
-```
-users/
-└── {uid}/
-    └── todos/
-        └── {todoId}/
-            ├── title        (string)
-            ├── description  (string)
-            ├── completed    (boolean)
-            └── createDate   (string)
-```
-
----
-
-## Available Scripts
-
-```bash
-npm run dev       # Start development server
-npm run build     # Build for production
-npm run preview   # Preview production build
-npm run lint      # Run ESLint
-```
-
----
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to
-discuss what you would like to change.
-
----
-
-## License
-
-[MIT](LICENSE)
