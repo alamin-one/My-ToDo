@@ -74,7 +74,7 @@ A modern full-stack Todo application built with **React**, **Firebase Authentica
 
 ## Screenshot
 
-![TodoApp](https://github.com/alamin-one/My-ToDo/blob/master/public/todo..png?raw=true)
+![TodoApp](./public/todo.webp)
 
 ---
 
